@@ -10,8 +10,16 @@ export default function ResultPage() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    // Replace history so browser back goes to dashboard, not back to the test
+    window.history.replaceState(null, '', window.location.href);
+    window.history.pushState(null, '', window.location.href);
+    const handlePopState = () => {
+      navigate('/dashboard', { replace: true });
+    };
+    window.addEventListener('popstate', handlePopState);
     api.get(`/results/${attemptId}`).then(({ data }) => setResult(data));
-  }, [attemptId]);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, [attemptId, navigate]);
 
   const handleGoToDashboard = () => {
     window.scrollTo(0, 0);

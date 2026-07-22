@@ -185,7 +185,7 @@ export default function TestPage() {
     try {
       const { data } = await api.post(`/tests/${testId}/submit`, { answers: payloadAnswers, totalTimeTaken });
       localStorage.removeItem(storageKey);
-      navigate(`/result/${data.attemptId}`);
+      navigate(`/result/${data.attemptId}`, { replace: true });
     } catch (err) {
       setErrorMessage(err.response?.data?.message || 'Submission failed');
       setSubmitting(false);
@@ -210,7 +210,7 @@ export default function TestPage() {
     }));
     api.post(`/tests/${testId}/submit`, { answers: payloadAnswers, totalTimeTaken }).then(({ data }) => {
       localStorage.removeItem(storageKey);
-      navigate(`/result/${data.attemptId}`);
+      navigate(`/result/${data.attemptId}`, { replace: true });
     }).catch(() => { setSubmitting(false); });
   };
 
