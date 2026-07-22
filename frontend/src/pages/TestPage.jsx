@@ -26,6 +26,7 @@ export default function TestPage() {
   const [secondsLeft, setSecondsLeft] = useState(null);
   const [submitting, setSubmitting] = useState(false);
   const [paletteOpen, setPaletteOpen] = useState(true);
+  const [mobilePaletteOpen, setMobilePaletteOpen] = useState(false);
   const [showSubmitModal, setShowSubmitModal] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
 
@@ -499,6 +500,57 @@ export default function TestPage() {
         onConfirm={() => setErrorMessage('')}
         onClose={() => setErrorMessage('')}
       />
+
+      {/* ── Mobile Palette Overlay ── */}
+      {mobilePaletteOpen && (
+        <div className="cbt-mobile-palette-overlay" onClick={() => setMobilePaletteOpen(false)} />
+      )}
+      <div className={`cbt-mobile-palette-drawer${mobilePaletteOpen ? ' open' : ''}`}>
+        <div className="cbt-mobile-palette-header">
+          <span>Question Palette</span>
+          <button className="cbt-mobile-palette-close" onClick={() => setMobilePaletteOpen(false)}>✕</button>
+        </div>
+        {/* Compact legend */}
+        <div className="cbt-mobile-legend">
+          <span className="cbt-ml-item"><span className="cbt-qicon qp-nv">{counts['not-visited']}</span> NV</span>
+          <span className="cbt-ml-item"><span className="cbt-qicon qp-na">{counts['not-answered']}</span> NA</span>
+          <span className="cbt-ml-item"><span className="cbt-qicon qp-ans">{counts['answered']}</span> Ans</span>
+          <span className="cbt-ml-item"><span className="cbt-qicon qp-mrk">{counts['marked']}</span> Mrk</span>
+          <span className="cbt-ml-item"><span className="cbt-qicon qp-amrk">{counts['answered-marked']}<span className="amrk-badge">✓</span></span> A+M</span>
+        </div>
+        <div className="cbt-mobile-palette-grid">
+          {questions.map((q, idx) => {
+            const a = answers[q._id] || { status: 'not-visited' };
+            const isCurrent = idx === currentIndex;
+            const statusCls = STATUS_CLASSES[a.status] || 'qp-nv';
+            return (
+              <button
+                key={q._id}
+                className={`cbt-pnum ${statusCls}${isCurrent ? ' cbt-pnum-cur' : ''}`}
+                onClick={() => { goTo(idx); setMobilePaletteOpen(false); }}
+              >
+                {idx + 1}
+                {a.status === 'answered-marked' && <span className="amrk-badge">✓</span>}
+              </button>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* ── Mobile Floating Palette Toggle ── */}
+      <button
+        className="cbt-mobile-palette-fab"
+        onClick={() => setMobilePaletteOpen(o => !o)}
+        title="Question Palette"
+      >
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="white">
+          <rect x="3" y="3" width="7" height="7" rx="1.5" />
+          <rect x="14" y="3" width="7" height="7" rx="1.5" />
+          <rect x="3" y="14" width="7" height="7" rx="1.5" />
+          <rect x="14" y="14" width="7" height="7" rx="1.5" />
+        </svg>
+        <span className="cbt-fab-count">{currentIndex + 1}/{questions.length}</span>
+      </button>
 
     </div>
   );
