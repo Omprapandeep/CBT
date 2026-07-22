@@ -43,8 +43,8 @@ npm run dev
 App runs on `http://localhost:5173` (Vite dev server proxies `/api` calls to the backend).
 
 ## 4. Using the app
-1. Go to `http://localhost:5173/login`, click **Admin login**, and sign in with the email/password
-   you set in `backend/.env` (`ADMIN_EMAIL` / `ADMIN_PASSWORD`).
+1.  click **Admin login**, and sign in with the email/password
+  
 2. In the Admin panel, click **+ Upload New Test**, fill in the title/duration/marking scheme, and
    upload `sample-questions.csv` (included in this project) to try it out.
 3. Log out, go back to `/login`, and log in as a student (just name + email — no password).
