@@ -1,0 +1,7 @@
+Subject,Question,Option1,Option2,Option3,Option4,CorrectOption,Explanation
+Physics,"The de-Broglie wavelength of a neutron in thermal equilibrium with heavy water at temperature T (Kelvin) and mass m is:",h/√(mkT),h/√(3mkT),2h/√(3mkT),2h/√(mkT),3,"Using de-Broglie wavelength λ = h/p and average kinetic energy (3/2)kT = p²/2m, we get p = √(3mkT), so λ = h/√(3mkT)."
+Physics,"SI unit of electric flux is:",Weber,Volt-metre,Newton per coulomb,None of these,2,"Electric flux = E·A, whose SI unit is N·m²/C, equivalent to Volt-metre."
+Chemistry,"Which of the following is an example of a Lewis acid?",NH3,BF3,H2O,OH-,2,"BF3 has an incomplete octet on boron and can accept an electron pair, making it a Lewis acid."
+Chemistry,"The IUPAC name of CH3-CH2-OH is:",Methanol,Ethanol,Propanol,Ethanal,2,"CH3-CH2-OH is ethanol, a two-carbon alcohol."
+Biology,"Which of the following is the powerhouse of the cell?",Nucleus,Ribosome,Mitochondria,Golgi body,3,"Mitochondria generate ATP through cellular respiration, hence called the powerhouse of the cell."
+Biology,"DNA replication is:",Conservative,Semi-conservative,Dispersive,Non-conservative,2,"Meselson and Stahl's experiment proved that DNA replication is semi-conservative."
