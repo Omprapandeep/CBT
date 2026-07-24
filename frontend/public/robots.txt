@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://cbtpracticeom.vercel.app/sitemap.xml
